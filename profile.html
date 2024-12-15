@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InkSpire - Profile</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Add jQuery from CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="images/profile-pic.png" alt="Profile Picture" class="profile-pic">
+            <h2 id="username">John Doe</h2>
+            <p>Email: sdobbin012@gmail.com</p>
+        </div>
+
+        <div class="profile-content">
+            <h3>About Me</h3>
+            <p id="about-me">I love reading fantasy and mystery books!</p>
+
+            <h3>My Books</h3>
+            <ul id="books-list">
+                <li>Percy Jackson and The Lightning Thief</li>
+                <li>The Cruel Prince</li>
+                <li>The Red Scrolls Of Magic</li>
+                <!-- More books -->
+            </ul>
+        </div>
+
+        <button class="edit-btn" id="edit-profile-btn">Edit Profile</button>
+        <button id="logout-button">Logout</button>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            const params = new URLSearchParams(window.location.search);
+            const user = params.get('user');
+            const username = $('#username');
+            const aboutMe = $('#about-me');
+            const editBtn = $('#edit-profile-btn');
+            const logoutBtn = $('#logout-button');
+
+            // Step 2: Display the user information if available
+            if (user) {
+                username.text(user); // Update username
+            } else {
+                window.location.href = 'login.html'; // Redirect to login if not logged in
+            }
+
+            // Step 3: Logout functionality
+            logoutBtn.click(function() {
+                localStorage.removeItem('loggedInUser');
+                alert('Logged out successfully.');
+                window.location.href = 'index.html'; // Redirect to the home page
+            });
+
+            // Step 4: Edit Profile functionality
+            let isEditing = false;
+            editBtn.click(function() {
+                if (!isEditing) {
+                    // Switch to edit mode
+                    isEditing = true;
+                    editBtn.text('Save Profile'); // Change button text
+                    aboutMe.html(`<textarea id="about-me-text">${aboutMe.text()}</textarea>`); // Make "About Me" editable
+                } else {
+                    // Switch to display mode
+                    isEditing = false;
+                    editBtn.text('Edit Profile'); // Change button text
+                    const newAboutMe = $('#about-me-text').val();
+                    aboutMe.text(newAboutMe); // Save changes to "About Me" section
+                }
+            });
+        });
+    </script>
+</body>
+</html>

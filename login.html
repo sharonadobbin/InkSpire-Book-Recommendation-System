@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InkSpire - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- For icons -->
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #bdd29a;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        /* Login Container */
+        .login-container {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        .login-container h1 {
+            color: #022405;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #a3d39c;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #022405;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #a3d39c;
+        }
+
+        p {
+            font-size: 14px;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        p a {
+            color: #022405;
+            text-decoration: none;
+        }
+
+        p a:hover {
+            text-decoration: underline;
+        }
+
+        /* Quote Box Styles */
+        .quote-box {
+            background-color: white;
+            border-radius: 20px;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .quote-box p {
+            font-size: 18px;
+            color: #333;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .quote-box h2 {
+            font-size: 22px;
+            font-weight: bold;
+            color: #022405;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply fadeIn animation */
+        .quote-box {
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quote-box">
+        <p id="quote-text"></p>
+        <h2 id="quote-author"></h2>
+    </div>
+
+    <div class="login-container">
+        <h1>Login to Your Account</h1>
+        <form id="login-form">
+            <label for="login-username">Username</label>
+            <input type="text" id="login-username" name="username" required>
+
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="register.html">Sign up here</a></p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // List of sample quotes or Taylor Swift lyrics
+        const quotes = [
+        { text: "If my life is going to mean anything, I have to live it myself.", author: "Rick Riordan, *The Lightning Thief*" },
+        { text: "One must always be careful of books, and what is inside them, for words have the power to change us.", author: "Cassandra Clare, *The Infernal Devices*" },
+        { text: "Fear is only your enemy if you allow it to be.", author: "Sabaa Tahir, *An Ember in the Ashes*" },
+        { text: "Some things are worth pursuit regardless of the cost.", author: "Vanessa Kelly, *The Highlander’s Princess Bride*" },
+        { text: "If you’re afraid of your own dreams, you’re limiting yourself.", author: "E.J. Mellow, *The Dreamer*" },
+        { text: "Hope is a powerful thing. Some say it’s a different breed of magic altogether.", author: "Stephanie Garber, *Caraval*" },
+        { text: "Even in the darkness, something is always happening.", author: "Holly Black, *The Cruel Prince*" },
+        { text: "No story is ever completely told. The end is just a place where you decide to stop.", author: "Holly Jackson, *A Good Girl’s Guide to Murder*" },
+        { text: "We’ve all got both light and dark inside us. What matters is the part we choose to act on.", author: "J.K. Rowling, *Harry Potter and the Order of the Phoenix*" },
+        { text: "Do not be afraid of being the hero of your own story.", author: "E.J. Mellow, *The Divide*" },
+        { text: "Courage isn’t about being fearless. It’s about facing what scares you the most.", author: "Rick Riordan, *The House of Hades*" },
+        { text: "Sometimes we’re the only ones who can see our own dreams clearly.", author: "Stephanie Garber, *Legendary*" },
+        { text: "Love doesn’t need to be perfect. It just needs to be true.", author: "Holly Black, *The Wicked King*" },
+        { text: "Good and evil are always at war inside us. It’s a matter of who you want to win.", author: "Cassandra Clare, *City of Bones*" }
+    ];
+
+        // Randomly select a quote or lyric
+        function getRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            return quotes[randomIndex];
+        }
+
+        // Display the quote on the page
+        $(document).ready(function () {
+            const randomQuote = getRandomQuote();
+            $('#quote-text').text(`"${randomQuote.text}"`);
+            $('#quote-author').text(`— ${randomQuote.author}`);
+        });
+
+        // Login form submission handler
+        document.getElementById('login-form').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent default form submission
+
+            const inputUsername = document.getElementById('login-username').value;
+            const inputPassword = document.getElementById('login-password').value;
+
+            // Retrieve saved credentials from localStorage
+            const savedUsername = localStorage.getItem('username');
+            const savedPassword = localStorage.getItem('password');
+
+            // Validate credentials
+            if (inputUsername === savedUsername && inputPassword === savedPassword) {
+                alert('Login successful!');
+                localStorage.setItem('loggedInUser', inputUsername); // Save current session
+                window.location.href = 'index.html'; // Redirect to home/profile page
+            } else {
+                alert('Invalid username or password.');
+            }
+        });
+    </script>
+</body>
+
+</html>

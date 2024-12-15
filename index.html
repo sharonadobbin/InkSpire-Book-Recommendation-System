@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InkSpire</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="C:\Users\Sharon dobbin\OneDrive\Desktop\InkSpire\images\InkSpire Logo.png" alt="InkSpire Logo">
+            
+        </div>
+        <nav>
+            <div>
+                <input type="text" placeholder="Search for books..." id="search-bar">
+                <button id="search-button">Search</button>
+            </div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#genres">Genres</a></li>
+                <li><a href="#featured-books">Favorites</a></li>
+                <li><a href="profile.html" id="profile-link">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section id="featured-books">
+            <h2>My Books</h2>
+            <div class="book-grid" id="book-grid">
+                <div class="book-card">
+                    <img src="images/book1.webp" alt="Percy Jackson and The Lightning Thief">
+                    <p class="book-title">Percy Jackson and The Lightning Thief</p>
+                </div>
+                <div class="book-card">
+                    <img src="images/book2.jpg" alt="The Cruel Prince">
+                    <p class="book-title">The Cruel Prince</p>
+                </div>
+                <div class="book-card">
+                    <img src="images/book3.jpg" alt="The Red Scrolls of Magic">
+                    <p class="book-title">The Red Scrolls of Magic</p>
+                </div>
+                <!-- Add more book cards as needed -->
+            </div>
+        </section>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Step 1: Collect all the book titles from the book cards
+                const bookTitles = [];
+                const bookElements = document.querySelectorAll('.book-title');
+                
+                bookElements.forEach(book => {
+                    bookTitles.push(book.textContent.trim());
+                });
+        
+                // Step 2: Store the collected book titles in localStorage
+                localStorage.setItem('myBooks', JSON.stringify(bookTitles));
+            });
+        </script>
+        
+        <!-- Browse by Genres Section -->
+        <section id="genres">
+            <h2>Browse by Genres</h2>
+            <ul class="genre-list">
+                <li><a href="fiction.html">Fiction</a></li>
+                <li><a href="mystery.html">Mystery</a></li>
+                <li><a href="thriller.html">Thriller</a></li>
+                <li><a href="romance.html">Romance</a></li>
+                <li><a href="romantasy.html">Romantasy</a></li>
+                <li><a href="fantasy.html">Fantasy</a></li>
+                <li><a href="science-fiction.html">Science Fiction</a></li>
+                <li><a href="womens-fiction.html">Women's Fiction</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="historical-fiction.html">Historical Fiction</a></li>
+                <li><a href="biography.html">Biography</a></li>
+                <li><a href="autobiography.html">Autobiography</a></li>
+                <li><a href="horror.html">Horror</a></li>
+                <li><a href="young-adult.html">Young Adult</a></li>
+                <li><a href="non-fiction.html">Non-Fiction</a></li>
+                <li><a href="classics.html">Classics</a></li>
+                <li><a href="audiobooks.html">Audiobooks</a></li>
+                <li><a href="childrens-literature.html">Children's Literature</a></li>
+                <li><a href="middle-grade.html">Middle Grade</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 InkSpire. Web Dev Project By Sharon A Dobbin (1AT22CS120)</p>
+        <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+        </ul>
+    </footer>
+
+    <script>
+        // Update Profile Link
+        document.addEventListener('DOMContentLoaded', function() {
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            const profileLink = document.getElementById('profile-link');
+
+            if (loggedInUser) {
+                profileLink.href = `profile.html?user=${loggedInUser}`; // Redirect to personalized profile
+            } else {
+                profileLink.href = 'login.html'; // Redirect to login if not logged in
+            }
+        });
+    </script>
+    <script src="js/script.js"></script>
+</body>
+</html>

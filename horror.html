@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InkSpire</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #022405;
+            color: white;
+            padding: 20px;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            width: 120px;
+            margin-right: 10px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        /* Aligning search bar and button to the right */
+        header nav .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        header nav input {
+            padding: 10px;
+            width: 250px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        header nav button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        header nav button:hover {
+            background-color: #45a049;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin: 0 15px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        header nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Book Grid Layout */
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .book-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .book-card img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .book-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 10px;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+        }
+
+        /* Featured Books Section */
+        #featured-books {
+            padding: 40px;
+            background-color: #f5f5f0;
+            margin-bottom: 40px;
+        }
+
+        #featured-books h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #022405;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #022405;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        footer ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="C:\Users\Sharon dobbin\OneDrive\Desktop\InkSpire\images\InkSpire Logo.png" alt="InkSpire Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li> <!-- Changed href to index.html -->
+                <li><a href="index.html#featured-books">Favorites</a></li>
+                <li><a href="index.html#genres">Genres</a></li>
+                <li><a href="profile.html" id="profile-link">Profile</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" placeholder="Search for books..." id="search-bar">
+                <button id="search-button">Search</button>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main>
+        <!-- Corrected Book Grid -->
+        <section id="featured-books">
+            <h2>Horror</h2>
+            <div class="book-grid" id="book-grid">
+                <div class="book-card">
+                    <a href="https://www.goodreads.com/book/show/16299.And_Then_There_Were_None" target="_blank">
+                        <img src="images/mystery/book1.avif" alt="And Then There Were None">
+                        <p class="book-title">And Then There Were None</p>
+                    </a>
+                </div>
+                <div class="book-card">
+                    <a href="https://www.goodreads.com/book/show/853510.Murder_on_the_Orient_Express" target="_blank">
+                        <img src="C:\Users\Sharon dobbin\OneDrive\Desktop\InkSpire\images\mystery\book2.jpg" alt="Murder On The Orient Express">
+                        <p class="book-title">Murder On The Orient Express</p>
+                    </a>
+                </div>
+                <div class="book-card">
+                    <a href="https://www.goodreads.com/book/show/49596.The_Secret_Adversary" target="_blank">
+                        <img src="C:\Users\Sharon dobbin\OneDrive\Desktop\InkSpire\images\mystery\book3.jpg" alt="The Secret Adversary">
+                        <p class="book-title">The Secret Adversary</p>
+                    </a>
+                </div>
+                <div class="book-card">
+                    <a href="https://www.goodreads.com/book/show/16366.Endless_Night" target="_blank">
+                        <img src="C:\Users\Sharon dobbin\OneDrive\Desktop\InkSpire\images\mystery\book4.jpg" alt="Endless Night">
+                        <p class="book-title">Endless Night</p>
+                    </a>
+                </div>
+                <div class="book-card">
+                    <a href="https://www.goodreads.com/book/show/16312.One_Two_Buckle_My_Shoe" target="_blank">
+                        <img src="C:\Users\Sharon dobbin\OneDrive\Desktop\InkSpire\images\mystery\book5.jpg" alt="One, Two, Buckle My Shoe">
+                        <p class="book-title">One, Two, Buckle My Shoe</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 InkSpire. Web Dev Project By Sharon A Dobbin (1AT22CS120)</p>
+        <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+        </ul>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
